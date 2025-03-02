@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV - CAIXA</title>
+    <link rel="stylesheet" href="/frontend/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- PRODUTO ESCANEADO -->
+        <div class="header">
+            <div class="product-scanned" id="product-name">NENHUM PRODUTO ESCANEADO</div>
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="main-grid">
+
+            <!-- LOGO -->
+            <div class="logo-container">
+                <img src="/frontend/assets/images/logo.jpg" alt="Logo" class="logo">
+            </div>
+
+            <!-- CAMPOS -->
+            <div class="fields">
+                <div class="field">
+                    <label for="barcode">Código de Barras</label>
+                    <input type="text" id="barcode">
+                </div>
+                <div class="field">
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" id="quantity" value="1">
+                </div>
+                 <div class="field">
+                    <label for="discount">Desconto</label>
+                    <input type="text" id="discount">
+                </div>
+                <div class="field">
+                    <label for="unit-price">Preço Unitário</label>
+                    <input type="text" id="unit-price" readonly>
+                </div>
+                <div class="field">
+                    <label for="total-price">Preço Total</label>
+                    <input type="text" id="total-price" readonly>
+                </div>
+            </div>
+
+            <!-- CARRINHO -->
+            <div class="cart-container">
+                <table id="cart-items">
+                    <thead>
+                        <tr>
+                        <th>Item</th>
+                        <th>Cód</th>
+                        <th>Descrição</th>
+                        <th>Qntd</th>
+                        <th>Preço Unitário</th>
+                        <th>Preço Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- RODAPÉ -->
+        <div class="footer">
+            <div class="open-box">CAIXA ABERTO</div>
+            <!-- Novo campo para valor recebido -->
+<div class="field field-footer field-footer-1">
+    <label for="received">Valor Recebido</label>
+    <input type="number" id="received" placeholder="Digite o valor recebido" step="0.01">
+</div>
+
+<!-- Novo campo para mostrar o troco -->
+<div class="field field-footer field-footer-2"
+    <label for="change">Troco</label>
+    <input type="number" id="change" placeholder="Troco" step="0.01" readonly>
+</div>
+            <div class="subtotal">
+                <p>Subtotal</p>
+                <span>R$ 0,00</span>
+            </div>
+        </div>
+
+        <!-- BOTÕES -->
+        <div class="buttons-container">
+            <button id="scan-btn" class="button scan-btn">ESCANEAR</button>
+            <button id="cancel-btn" class="button cancel-btn">CANCELAR VENDA</button>
+            <button id="finalize-btn" class="button finalize-btn">FINALIZAR VENDA</button>
+        </div>
+
+        <!-- SCANNER (Pop-up) -->
+        <div class="scanner-container" id="scanner-popup">
+            <div id="scanner"></div>
+            <button id="close-popup" class="button">FECHAR</button>
+        </div>
+
+    </div>
+
+    <script src="/frontend/app.js"></script>
+</body>
+</html>
