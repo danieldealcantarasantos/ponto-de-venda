@@ -6,7 +6,7 @@
     --input-border: #ccc; /* Cor do borda dos inputs */
     --input-bg: #fff; /* Cor de fundo dos inputs */
     --cart-border: #ddd; /* Borda do carrinho */
-    --cart-bg: #fff; /* Cor de fundo do carrinho */
+    --cart-bg: #eee; /* Cor de fundo do carrinho */
     --footer-bg: #004AAD; /* Cor de fundo do rodapé */
     --footer-text: white; /* Cor do texto do rodapé */
     --scanner-border: #999999; /* Cor da borda do scanner */
@@ -53,7 +53,7 @@ body {
 /* GRID PRINCIPAL */
 .main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-columns: 1.2fr 0.8fr 3fr;
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -100,19 +100,35 @@ body {
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid var(--input-border);
+      width: 150px; /* Defina o tamanho desejado */
+      background-color: #eee;
 }
 
-.field-footer-1, .field-footer-2 {
+input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid var(--primary-color);
+}
+
+.field-footer-1,
+.field-footer-2,
+.field-footer-3 {
   padding: 10px;
 }
 
-.field-footer-1 input,.field-footer-2 input {
+.field-footer-1 input,
+.field-footer-2 input {
   border: 1px solid #555;
+  padding: 5px;
+  border-radius: 5px;
+  width: 120px; /* Defina o tamanho desejado */
+  max-width: 100%; /* Garante que a largura não ultrapasse o contêiner */
 }
 
 /* CARRINHO */
 .cart-container {
     grid-column: 3 / 4;
+    width: 100%;
     border: 2px solid var(--cart-border); /* Usando variável de borda */
     border-radius: 5px;
     background-color: var(--cart-bg); /* Cor de fundo */
@@ -172,14 +188,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    padding: px;
     background-color: var(--footer-bg); /* Usando variável para o fundo */
     color: var(--footer-text); /* Usando variável para o texto */
     border-radius: 8px;
 }
 
 .open-box {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     flex-grow: 1;
     text-align: center;
@@ -188,7 +204,7 @@ body {
 .subtotal {
     font-size: 16px;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
 }
 
 .subtotal p {
@@ -199,10 +215,9 @@ body {
 }
 
 .subtotal span {
-    font-size: 24px;
+    font-size: 25px;
     color: #fff;
     padding-right: 10px;
-    padding-left: 10px;
 }
 
 
