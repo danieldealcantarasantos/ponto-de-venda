@@ -44,7 +44,7 @@ body {
 .product-scanned {
     font-size: 18px;
     font-weight: bold;
-    padding: 8px;
+    padding: 10px;
     background-color: var(--primary-color);
     color: var(--footer-text);
     border-radius: 8px;
@@ -53,7 +53,7 @@ body {
 /* GRID PRINCIPAL */
 .main-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr 3fr;
+    grid-template-columns: 1fr 0.5fr 3fr;
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -68,7 +68,7 @@ body {
 
 .logo {
     width: 100%;
-    max-width: 225px;
+    max-width: 200px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra suave */
@@ -87,6 +87,7 @@ body {
     font-size: 14px;
     display: flex;
     flex-direction: column;
+    padding: 2px;
 }
 
 .field label {
@@ -95,6 +96,32 @@ body {
 }
 
 .field input {
+    padding: 4px;
+    font-size: 13px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    width: 120px; /* Defina o tamanho desejado */
+    background-color: #eee;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.field-footer {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.field-footer label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.field-footer input {
     padding: 3px;
     font-size: 13px;
     margin-top: 5px;
@@ -104,20 +131,16 @@ body {
       background-color: #eee;
 }
 
-input:focus {
-  outline: none;
-  box-shadow: none;
-  border: 1px solid var(--primary-color);
-}
-
 .field-footer-1,
 .field-footer-2,
-.field-footer-3 {
+.field-footer-3,
+.field-footer-4 {
   padding: 10px;
 }
 
 .field-footer-1 input,
-.field-footer-2 input {
+.field-footer-2 input,
+.field-footer-3 input {
   border: 1px solid #555;
   padding: 5px;
   border-radius: 5px;
@@ -155,12 +178,12 @@ input:focus {
 /* Definindo o tamanho das colunas */
 #cart-items th:nth-child(1),
 #cart-items td:nth-child(1) {
-    width: 8%; /* Item */
+    width: 6%; /* Item */
 }
 
 #cart-items th:nth-child(2),
 #cart-items td:nth-child(2) {
-    width: 10%; /* Cód */
+    width: 18%; /* Cód */
 }
 
 #cart-items th:nth-child(3),
@@ -175,12 +198,12 @@ input:focus {
 
 #cart-items th:nth-child(5),
 #cart-items td:nth-child(5) {
-    width: 17,5%; /* Preço Unitário */
+    width: 16%; /* Preço Unitário */
 }
 
 #cart-items th:nth-child(6),
 #cart-items td:nth-child(6) {
-    width: 17,5%; /* Preço Total */
+    width: 13%; /* Preço Total */
 }
 
 /* RODAPÉ */
@@ -188,7 +211,7 @@ input:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: px;
+    padding: 10px;
     background-color: var(--footer-bg); /* Usando variável para o fundo */
     color: var(--footer-text); /* Usando variável para o texto */
     border-radius: 8px;

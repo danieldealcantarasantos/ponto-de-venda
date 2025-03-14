@@ -26,17 +26,14 @@
             <!-- CAMPOS -->
             <div class="fields">
                 <div class="field">
-                    <label for="barcode">Código de Barras</label>
-                    <input type="text" id="barcode">
-                </div>
-                <div class="field">
                     <label for="quantity">Quantidade</label>
                     <input type="number" id="quantity" value="1">
                 </div>
-                 <div class="field">
-                    <label for="discount">Desconto</label>
-                    <input type="text" id="discount">
+                <div class="field">
+                    <label for="barcode">Código de Barras</label>
+                    <input type="text" id="barcode">
                 </div>
+
                 <div class="field">
                     <label for="unit-price">Preço Unitário</label>
                     <input type="text" id="unit-price" readonly>
@@ -53,7 +50,7 @@
                     <thead>
                         <tr>
                         <th>Item</th>
-                        <th>Cód</th>
+                        <th>Código de Barras</th>
                         <th>Descrição</th>
                         <th>Qntd</th>
                         <th>Preço Unitário</th>
@@ -66,25 +63,34 @@
 
         </div>
 
-        <!-- RODAPÉ -->
-        <div class="footer">
-            <div class="open-box">CAIXA ABERTO</div>
-            <!-- Novo campo para valor recebido -->
-<div class="field field-footer field-footer-1">
+<!-- RODAPÉ -->
+<div class="footer">
+  <div class="open-box">CAIXA ABERTO</div>
+  
+  <!-- Campo para Valor Recebido -->
+  <div class="field-footer field-footer-1">
     <label for="received">Valor Recebido</label>
-    <input type="number" id="received" step="0.01">
-</div>
-
-<!-- Novo campo para mostrar o troco -->
-<div class="field field-footer field-footer-2"
+    <input type="number" id="received" placeholder="0,00" step="0.01">
+  </div>
+  
+  <!-- Campo para Troco -->
+  <div class="field-footer field-footer-2">
     <label for="change">Troco</label>
-    <input type="number" id="change" step="0.01" readonly>
+    <input type="number" id="change" placeholder="0,00" step="0.01" readonly>
+  </div>
+  
+  <!-- Campo para Desconto -->
+  <div class="field-footer field-footer-3">
+    <label for="discount">Desconto</label>
+    <input type="number" id="discount" placeholder="0,00" step="0.01">
+  </div>
+  
+  <!-- Subtotal -->
+  <div class="subtotal field-footer field-footer-4">
+    <p>Subtotal</p>
+    <span>R$ 0,00</span>
+  </div>
 </div>
-            <div class="subtotal field field-footer field-footer-3">
-                <p>Subtotal</p>
-                <span>R$ 0,00</span>
-            </div>
-        </div>
 
         <!-- BOTÕES -->
         <div class="buttons-container">
