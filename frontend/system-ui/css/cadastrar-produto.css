@@ -1,0 +1,149 @@
+    :root {
+  --primary-color: #004AAD; /* Azul */
+  --secondary-color: #f9f9f9; /* Cinza claro */
+  --text-color: #333333; /* Texto escuro */
+  --input-border: #ccc; /* Cor do borda dos inputs */
+  --input-bg: #ffffff; /* Cor de fundo dos inputs */
+  --footer-bg: #004AAD; /* Cor de fundo do rodapé */
+  --footer-text: white; /* Cor do texto do rodapé */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--input-bg); /* Fundo branco */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0px auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 15px;
+  padding-top: 5px;
+  background-color: var(--input-bg); /* Fundo branco igual ao body */
+}
+
+button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #1f1f1f;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+button:hover {
+      background-color: #003BE6;
+    }
+    
+input, select, textarea {
+  font-size: 16px;
+}
+
+h1 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+label {
+      font-weight: bold;
+      font-size: 14px;
+      color: var(--text-color);
+    }
+
+input, select {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid var(--input-border);
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 5px var(--primary-color);
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: var(--footer-text);
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Estilo para os campos */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--input-border);
+    }
+    
+    #abrirScannerBtn {
+      margin-bottom: 15px;
+    }
+    
+.input-wrapper {
+  position: relative; /* importante para a lista se posicionar em relação a esse container */
+}
+
+.lista-hover {
+  position: absolute;
+  top: 42px; /* ou o quanto for necessário para aparecer logo abaixo do input */
+  left: 0;
+  width: 100%; /* para ocupar a largura total do input */
+  background-color: #ccc;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  max-height: 180px; /* menos altura ainda, se quiser */
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Oculta as opções do datalist manualmente (não afeta a funcionalidade) */
+option[value="Adicionar categoria"],
+option[value="Adicionar subcategoria"] {
+  display: none;
+}
+
+/* Oculta os campos de nova categoria e subcategoria inicialmente */
+#nova-categoria-container,
+#nova-subcategoria-container {
+  display: none;
+}

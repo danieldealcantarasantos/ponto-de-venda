@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Produto</title>
+  <link rel="stylesheet" href="/frontend/system-ui/css/cadastrar-produto.css">
+  <link rel="stylesheet" href="/frontend/system-ui/css/leitor.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Cadastro de Produto</h1>
+    <!-- SCANNER -->
+    <div id="interactive" class="viewport">
+      <div class="scan-region pulse"></div>
+</div>
+
+    <form id="produto-form">
+      <div class="field">
+        <label for="codigoBarras">Código de Barras</label>
+        <input type="text" id="codigoBarras" placeholder="Digite apenas números (13 caracteres)" required>
+      </div>
+<div id="produtoExistenteContainer"></div>
+      <div class="field">
+        <label for="descricao">Nome do Produto</label>
+        <input type="text" id="descricao" placeholder="Digite aqui" required>
+      </div>
+
+      <div class="field">
+        <label for="precoVendaVarejo">Preço de Venda</label>
+        <input type="number" step="0.01" id="precoVendaVarejo" placeholder="Ex: 0,00 ou 0.00" required>
+      </div>
+
+
+<div class="field">
+  <label for="categoriaProduto">Categoria</label>
+<div class="input-wrapper">
+  <input list="listaCategorias" id="categoriaProduto" name="categoriaProduto"  placeholder="Digite aqui ou escolha na lista"/>
+  <div class="lista-hover" id="suaListaCategorias" style="display: none;">
+    <!-- opções da lista -->
+  </div>
+</div>
+  <datalist id="listaCategorias"></datalist>
+  <option value="Adicionar categoria"></option>
+  <div id="nova-categoria-container" style="display: none;">
+    <label for="novaCategoria">Nova Categoria</label>
+    <input type="text" id="novaCategoria" name="novaCategoria" />
+  </div>
+</div>
+
+<div class="field">
+  <label for="subcategoriaProduto">Subcategoria</label>
+<div class="input-wrapper">
+  <input list="listaSubcategorias" id="subcategoriaProduto" name="subcategoriaProduto" placeholder="Digite aqui ou escolha na lista"/>
+  <div class="lista-hover" id="suaListaSubcategorias" style="display: none;">
+    <!-- opções da lista -->
+  </div>
+</div>
+  <datalist id="listaSubcategorias"></datalist>
+  <div id="nova-subcategoria-container" style="display: none;">
+    <label for="novaSubcategoria">Nova Subcategoria</label>
+    <input type="text" id="novaSubcategoria" name="novaSubcategoria" />
+  </div>
+</div>
+
+      <button type="submit">Cadastrar produto</button>
+      <button id="enviarNovosProdutos">Enviar novos produtos</button>
+    </form>
+  </div>
+
+  <script src="/frontend/system-ui/javascript/cadastrar-produto.js"></script>
+  <script src="/frontend/system-ui/javascript/leitor.js"></script>
+</body>
+</html>

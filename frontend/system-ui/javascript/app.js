@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Simulando um banco de dados local
     const produtos = {
       "7898215151784": { nome: "Creme de Leite Piracanjuba", preco: 3.50 },
-      "7899876543210": { nome: "Pacote de Arroz", preco: 24.90 },
+      "7899876543210": { nome: "Pacote de Arroz", preco: 6.00 },
       // Adicione outros produtos conforme necessário
     };
     
