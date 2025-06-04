@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {  
-  const beep = new Audio('/frontend/system-ui/sounds/beep.mp3');
+  const beep = new Audio('frontend/system-ui/sounds/beep.mp3');
   
   Quagga.init({
   inputStream: {
