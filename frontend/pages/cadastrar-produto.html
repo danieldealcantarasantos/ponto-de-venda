@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Produto</title>
-  <link rel="stylesheet" href="frontend/system-ui/css/cadastrar-produto.css">
-  <link rel="stylesheet" href="frontend/system-ui/css/leitor.css">
+  <link rel="stylesheet" href="/frontend/system-ui/css/cadastrar-produto.css">
+  <link rel="stylesheet" href="/frontend/system-ui/css/leitor.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,8 @@
 <div class="field">
   <label for="categoriaProduto">Categoria</label>
 <div class="input-wrapper">
-  <input list="listaCategorias" id="categoriaProduto" name="categoriaProduto"  placeholder="Digite aqui ou escolha na lista"/>
+  <input type="text" id="categoriaProduto" name="categoriaProduto" placeholder="Digite aqui ou escolha na lista" autocomplete="off"/>
+<ul class="lista-hover" id="sugestoesCategoria"></ul>
   <div class="lista-hover" id="suaListaCategorias" style="display: none;">
     <!-- opções da lista -->
   </div>
@@ -46,7 +47,7 @@
   <datalist id="listaCategorias"></datalist>
   <option value="Adicionar categoria"></option>
   <div id="nova-categoria-container" style="display: none;">
-    <label for="novaCategoria">Nova Categoria</label>
+    <label for="novaCategoria">Nova categoria</label>
     <input type="text" id="novaCategoria" name="novaCategoria" />
   </div>
 </div>
@@ -54,14 +55,15 @@
 <div class="field">
   <label for="subcategoriaProduto">Subcategoria</label>
 <div class="input-wrapper">
-  <input list="listaSubcategorias" id="subcategoriaProduto" name="subcategoriaProduto" placeholder="Digite aqui ou escolha na lista"/>
+  <input type="text" id="subcategoriaProduto" name="subcategoriaProduto" placeholder="Digite aqui ou escolha na lista" autocomplete="off"/>
+<ul class="lista-hover" id="sugestoesSubcategoria"></ul>
   <div class="lista-hover" id="suaListaSubcategorias" style="display: none;">
     <!-- opções da lista -->
   </div>
 </div>
   <datalist id="listaSubcategorias"></datalist>
   <div id="nova-subcategoria-container" style="display: none;">
-    <label for="novaSubcategoria">Nova Subcategoria</label>
+    <label for="novaSubcategoria">Nova subcategoria</label>
     <input type="text" id="novaSubcategoria" name="novaSubcategoria" />
   </div>
 </div>
@@ -71,7 +73,7 @@
     </form>
   </div>
 
-  <script src="frontend/system-ui/javascript/cadastrar-produto.js"></script>
-  <script src="frontend/system-ui/javascript/leitor.js"></script>
+  <script src="/frontend/system-ui/javascript/cadastrar-produto.js"></script>
+  <script src="/frontend/system-ui/javascript/leitor.js"></script>
 </body>
 </html>

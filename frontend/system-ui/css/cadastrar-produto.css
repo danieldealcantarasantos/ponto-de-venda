@@ -122,18 +122,30 @@ input, select {
 
 .lista-hover {
   position: absolute;
-  top: 42px; /* ou o quanto for necessário para aparecer logo abaixo do input */
+  top: 100%; /* Alinha logo abaixo do input */
   left: 0;
-  width: 100%; /* para ocupar a largura total do input */
-  background-color: #ccc;
+  width: 100%;
+  background-color: white;
   color: black;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 8px;
-  max-height: 180px; /* menos altura ainda, se quiser */
+  border: 1px solid var(--input-border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  max-height: 180px;
   overflow-y: auto;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-hover li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.lista-hover li:hover {
+  background-color: #f0f0f0;
 }
 
 /* Oculta as opções do datalist manualmente (não afeta a funcionalidade) */

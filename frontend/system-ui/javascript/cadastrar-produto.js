@@ -78,6 +78,60 @@ subcategoriaSelect.addEventListener('input', function() {
     }
   });
   
+  function criarSugestoes(inputId, sugestoesId, lista) {
+  const input = document.getElementById(inputId);
+  const ul = document.getElementById(sugestoesId);
+  const wrapper = input.parentNode;
+
+  input.addEventListener("input", () => {
+    const valor = input.value.toLowerCase();
+    ul.innerHTML = "";
+
+    if (!valor) {
+      ul.style.display = "none";
+      return;
+    }
+
+    const filtradas = lista.filter(item => item.toLowerCase().includes(valor));
+    if (filtradas.length === 0) {
+      ul.style.display = "none";
+      return;
+    }
+
+    filtradas.forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item;
+  
+  if (item.toLowerCase().includes("adicionar")) {
+    li.style.fontWeight = "bold";
+    li.style.color = "#007BFF";
+  }
+  
+  li.addEventListener("click", () => {
+    input.value = item;
+    ul.style.display = "none";
+    
+    if (item === "Adicionar Categoria") {
+      document.getElementById('nova-categoria-container').style.display = 'block';
+    } else if (item === "Adicionar Subcategoria") {
+      document.getElementById('nova-subcategoria-container').style.display = 'block';
+    }
+  });
+  
+  ul.appendChild(li);
+});
+
+    ul.style.display = "block";
+  });
+
+  // Ocultar ao clicar fora
+  document.addEventListener("click", (e) => {
+    if (!wrapper.contains(e.target)) {
+      ul.style.display = "none";
+    }
+  });
+}
+  
   function preencherDatalist(id, items) {
     const datalist = document.getElementById(id);
     datalist.innerHTML = "";
@@ -117,31 +171,43 @@ subcategoriaSelect.addEventListener('input', function() {
   
   
   async function carregarOpcoes() {
-    const data = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    
-    const categorias = [...new Set(data.map(item => item["Categoria do Produto"]).filter(Boolean))];
-    const subcategorias = [...new Set(data.map(item => item["Subcategoria do Produto"]).filter(Boolean))];
-    
-    categoriaSelect.innerHTML = "<option value=''>Selecione uma categoria</option>";
-    categorias.forEach(cat => {
-      const option = document.createElement("option");
-      option.value = cat;
-      option.textContent = cat;
-      categoriaSelect.appendChild(option);
-    });
-    categoriaSelect.innerHTML += "<option value='nova'>+ Nova categoria</option>";
-    
-    subcategoriaSelect.innerHTML = "<option value=''>Selecione uma subcategoria</option>";
-    subcategorias.forEach(sub => {
-      const option = document.createElement("option");
-      option.value = sub;
-      option.textContent = sub;
-      subcategoriaSelect.appendChild(option);
-    });
-    subcategoriaSelect.innerHTML += "<option value='nova'>+ Nova subcategoria</option>";
-  }
+  const data = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+  
+  const categorias = [...new Set(data.map(item => item["Categoria do Produto"]).filter(Boolean))];
+  const subcategorias = [...new Set(data.map(item => item["Subcategoria do Produto"]).filter(Boolean))];
+  
+  // Adiciona opção de criar nova categoria/subcategoria
+  categorias.push("Adicionar Categoria");
+  subcategorias.push("Adicionar Subcategoria");
+  
+  categoriaSelect.innerHTML = "<option value=''>Selecione uma categoria</option>";
+  categorias.forEach(cat => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.textContent = cat;
+    categoriaSelect.appendChild(option);
+  });
+  
+  subcategoriaSelect.innerHTML = "<option value=''>Selecione uma subcategoria</option>";
+  subcategorias.forEach(sub => {
+    const option = document.createElement("option");
+    option.value = sub;
+    option.textContent = sub;
+    subcategoriaSelect.appendChild(option);
+  });
+  
+  // Atualiza sugestões
+  criarSugestoes("categoriaProduto", "sugestoesCategoria", categorias);
+  criarSugestoes("subcategoriaProduto", "sugestoesSubcategoria", subcategorias);
+}
   
   await carregarOpcoes();
+  
+  categorias.push("Adicionar Categoria");
+subcategorias.push("Adicionar Subcategoria");
+
+criarSugestoes("categoriaProduto", "sugestoesCategoria", categorias);
+criarSugestoes("subcategoriaProduto", "sugestoesSubcategoria", subcategorias);
   
   codigoBarrasInput.addEventListener("input", async () => {
     const codigo = codigoBarrasInput.value.trim();
