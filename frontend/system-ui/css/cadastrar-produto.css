@@ -45,6 +45,8 @@ button {
 
 button:hover {
       background-color: #003BE6;
+      box-shadow: 0 0 5px #003BE6;
+
     }
     
 input, select, textarea {
@@ -70,18 +72,21 @@ label {
     }
 
 input, select {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid var(--input-border);
-      border-radius: 5px;
-      background-color: #fff;
-      color: #000;
-    }
+  
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 2px solid var(--input-border) !important;
+  background-color: transparent;
+  transition: border-color 0.2s ease, transform  0.3s ease;
+  color: var(--text-color);
+}
 
-    input:focus, select:focus {
-      outline: none;
-      box-shadow: 0 0 5px var(--primary-color);
-    }
+input:focus, select:focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary-color) !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.01);
+}
 
     button {
       background-color: var(--primary-color);
@@ -110,6 +115,9 @@ input, select {
       padding: 10px;
       border-radius: 5px;
       border: 1px solid var(--input-border);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
     }
     
     #abrirScannerBtn {
@@ -158,4 +166,13 @@ option[value="Adicionar subcategoria"] {
 #nova-categoria-container,
 #nova-subcategoria-container {
   display: none;
+}
+
+#produto-existente {
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+#produtoExistenteContainer {
+  margin-top: -12px;
 }

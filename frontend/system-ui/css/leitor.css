@@ -1,55 +1,210 @@
 #interactive.viewport {
-    position: relative;
-width: 100%;
-height: 30%;
-max-width: 400px;
-max-height: 240px;
-margin: 0 auto 20px;
-border: 2px solid #3B3B3B;
-border-radius: 3px;
-overflow: hidden;
-background-color: #000;
-    text-align: center;
+  position: relative;
+  width: 100%;
+  height: 35%;      /* aumentei um pouco da altura do container */
+  max-width: 400px;
+  max-height: 280px; /* proporcional ao aumento */
+  margin: 0 auto 20px;
+  border: 2px solid #000000;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #000;
+  text-align: center;
 }
 
+/* Vídeo/canvas */
 #interactive.viewport > canvas,
 #interactive.viewport > video {
-    max-width: 100%;
-    width: 100%;
+  max-width: 100%;
+  width: 100%;
+  height: 100%; /* para garantir que preencha o container */
+  object-fit: cover; /* mantém a proporção e preenche */
 }
 
-canvas.drawing,
-canvas.drawingBuffer {
+/* Máscara escura com centro transparente */
+#interactive.viewport::before {
+    content: "";
     position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.scan-region {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 50%;
-    border: 3px dashed rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
     pointer-events: none;
+    z-index: 10;
+    
+    /* Máscara retangular maior (55% x 35%) no centro */
+    mask:
+        linear-gradient(to right,
+            black calc(22.5%),          /* (100 - 55)/2 = 22.5% de cada lado */
+            transparent calc(22.5%),
+            transparent calc(77.5%),
+            black calc(77.5%)),
+        linear-gradient(to bottom,
+            black calc(32.5%),          /* (100 - 35)/2 = 32.5% */
+            transparent calc(32.5%),
+            transparent calc(67.5%),
+            black calc(67.5%));
+    
+    -webkit-mask:
+        linear-gradient(to right,
+            black calc(22.5%),
+            transparent calc(22.5%),
+            transparent calc(77.5%),
+            black calc(77.5%)),
+        linear-gradient(to bottom,
+            black calc(32.5%),
+            transparent calc(32.5%),
+            transparent calc(67.5%),
+            black calc(67.5%));
 }
 
-.pulse {
-    animation: pulse 2s infinite;
+/* Região de leitura */
+.scan-region {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;   /* aumentado */
+  height: 35%;  /* aumentado */
+  border: 3px dashed #003BE6;
+  border-radius: 0;
+  z-index: 20;
+  animation: piscar 2s infinite;
+  pointer-events: none;
 }
 
-@keyframes pulse {
-    0% {
-        opacity: 0.7;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0.7;
-    }
+/* Blur overlay para fundo com "buraco" no centro */
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
 }
 
+.blur-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+
+  /* Buraco transparente no centro, tamanho compatível com .scan-region */
+  mask: radial-gradient(
+    circle at center,
+    transparent 17.5%,  /* ajustado para 55% largura / 35% altura */
+    black 18.5%
+  );
+  -webkit-mask: radial-gradient(
+    circle at center,
+    transparent 17.5%,
+    black 18.5%
+  );
+}
+
+/* Animação de piscar da área de scan */
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.codigo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.codigo-wrapper input#codigoBarras {
+  flex: 0 0 85%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--input-border);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  border-bottom-left-radius: 0;
+}
+
+.botao-leitor#botaoCamera {
+  flex: 0 0 15%;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-bottom-right-radius: 0;
+}
+
+.botao-leitor#botaoCamera:hover {
+  background-color: #003BE6;
+  transform: scale(1.1);
+}
+
+.botao-leitor#botaoCamera:focus {
+  outline: none;
+  box-shadow: 0 0 5px #003BE6;
+}
+
+#botaoFlash {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #9E9E9E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+m
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.blur-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+
+  /* Cria um buraco transparente no centro com base na .scan-region */
+  mask: radial-gradient(
+    circle at center,
+    transparent 15%,
+    black 16%
+  );
+  -webkit-mask: radial-gradient(
+    circle at center,
+    transparent 15%,
+    black 16%
+  );
+}

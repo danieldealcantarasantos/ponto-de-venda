@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Produto</title>
-  <link rel="stylesheet" href="/ponto-de-venda/frontend/system-ui/css/cadastrar-produto.css">
-  <link rel="stylesheet" href="/ponto-de-venda/frontend/system-ui/css/leitor.css">
+  <link rel="stylesheet" href="/frontend/system-ui/css/cadastrar-produto.css">
+  <link rel="stylesheet" href="/frontend/system-ui/css/leitor.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- ADICIONE ESTA LINHA -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+</head><body>
 
   <div class="container">
     <h1>Cadastro de Produto</h1>
     <!-- SCANNER -->
     <div id="interactive" class="viewport">
       <div class="scan-region pulse"></div>
+      <!-- Botão Flash dentro do container da câmera -->
+<button id="botaoFlash" title="Ligar/desligar flash" style="display: none;">
+  <i class="fas fa-bolt"></i>
+</button>
 </div>
 
     <form id="produto-form">
       <div class="field">
-        <label for="codigoBarras">Código de Barras</label>
-        <input type="text" id="codigoBarras" placeholder="Digite apenas números (13 caracteres)" required>
-      </div>
+  <label for="codigoBarras">Código de Barras</label>
+  <div class="codigo-wrapper">
+    <input type="text" id="codigoBarras" placeholder="Digite apenas números (13 caracteres)" required>
+    <button type="button" id="botaoCamera" class="botao-leitor" title="Ativar/Desativar câmera">
+      <i class="fas fa-barcode"></i>
+    </button>
+  </div>
+</div>
 <div id="produtoExistenteContainer"></div>
       <div class="field">
         <label for="descricao">Nome do Produto</label>
@@ -45,7 +54,6 @@
   </div>
 </div>
   <datalist id="listaCategorias"></datalist>
-  <option value="Adicionar categoria"></option>
   <div id="nova-categoria-container" style="display: none;">
     <label for="novaCategoria">Nova categoria</label>
     <input type="text" id="novaCategoria" name="novaCategoria" />
@@ -68,12 +76,13 @@
   </div>
 </div>
 
-      <button type="submit">Cadastrar produto</button>
-      <button id="enviarNovosProdutos">Enviar novos produtos</button>
+      <button type="submit" id="botaoCadastrar">Cadastrar produto</button>
+<button type="button" id="botaoAtualizar" style="display:none;">Atualizar produto</button>
+      <button id="enviarNovosProdutos">Salvar na planilha</button>
     </form>
   </div>
 
-  <script src="/ponto-de-venda/frontend/system-ui/javascript/cadastrar-produto.js"></script>
-  <script src="/ponto-de-venda/frontend/system-ui/javascript/leitor.js"></script>
+  <script src="/frontend/system-ui/javascript/cadastrar-produto.js"></script>
+  <script src="/frontend/system-ui/javascript/leitor.js"></script>
 </body>
 </html>
